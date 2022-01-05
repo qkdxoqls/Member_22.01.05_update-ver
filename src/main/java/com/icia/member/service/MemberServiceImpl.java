@@ -38,7 +38,8 @@ public class MemberServiceImpl  implements  MemberService{
         MemberEntity member = mr.findById(memberId).get();
 
         //2
-
+        MemberDetailDTO memberDetailDTO = MemberDetailDTO.toMemberDetailDTO(member);
+        return memberDetailDTO;
         return null;
     }
 }
