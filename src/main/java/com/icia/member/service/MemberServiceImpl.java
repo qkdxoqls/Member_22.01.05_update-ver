@@ -16,14 +16,14 @@ public class MemberServiceImpl  implements  MemberService{
     private final MemberRepository mr;
 
     @Override
-    public void save(MemberSaveDTO membersaveDTO) {
+    public Long save(MemberSaveDTO membersaveDTO) {
         /*
             1. memberSaveDTO -> memberEntity에 옮기기
             2. memberRepository의 save메서드 호출 하면서  memberEntity 객체 전달
          */
 
         MemberEntity memberEntity = MemberEntity.saveMember(membersaveDTO);
-        mr.save(memberEntity);
+        return mr.save(memberEntity).getId();
 
     }
 
@@ -39,7 +39,7 @@ public class MemberServiceImpl  implements  MemberService{
 
         //2
         MemberDetailDTO memberDetailDTO = MemberDetailDTO.toMemberDetailDTO(member);
+        System.out.println("memberDetailDTO.toString() = " + memberDetailDTO.toString());
         return memberDetailDTO;
-        return null;
     }
 }
