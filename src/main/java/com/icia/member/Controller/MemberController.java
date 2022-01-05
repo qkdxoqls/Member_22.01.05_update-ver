@@ -1,5 +1,6 @@
 package com.icia.member.Controller;
 
+import com.icia.member.dto.MemberDetailDTO;
 import com.icia.member.dto.MemberLoginDTO;
 import com.icia.member.dto.MemberSaveDTO;
 import com.icia.member.service.MemberService;
@@ -59,6 +60,8 @@ public class MemberController {
     @GetMapping("{memberId}")
     public String findById(@PathVariable("memberId") Long memberId, Model model){
         System.out.println("memberId = " + memberId);
+        MemberDetailDTO member = ms.findById(memberId);
+        model.addAttribute("member",memberId);
         return "member/detail";
     }
 
